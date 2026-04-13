@@ -1,48 +1,90 @@
 """
 Created by: Jet Lu
 Created on: Apr 2026
-This module is a Micro:bit MicroPython program
+This module is a Micro:bit MicroPython program that displays a pixel going clockwise and counter clockwise.
 """
 
 from microbit import *
 
-# start
-display.show(Image.HAPPY)
-
 # variables
-loopCounterY= 0
-loopCounterX= 0
+loopCounterX = 0
+loopCounterY = 0
 
-while True :
-    if button_a.was_pressed() :
+# setup
+display.clear()
+display.show(Image.HAPPY)
+while True:
+
+    # clock wise
+    if button_a.was_pressed():
+
+        # setup
         display.clear()
-        loopCounterY= 0
-        loopCounterX= 0
+        loopCounterX = 0
+        loopCounterY = 0
 
-        # move pixel
-        while (loopCounterX <= 4) :
+        # goes right
+        while loopCounterX < 4:
             display.set_pixel(loopCounterX, loopCounterY, 9)
+            sleep(500)
+            display.set_pixel(loopCounterX, loopCounterY, 0)
             loopCounterX += 1
+
+        # goes down
+        while loopCounterY < 4:
+            display.set_pixel(loopCounterX, loopCounterY, 9)
             sleep(500)
             display.set_pixel(loopCounterX, loopCounterY, 0)
-
-        # move pixel down
-        while (loopCounterY <= 4) :
-            display.set_pixel(loopCounterX, loopCounterY, 9)
             loopCounterY += 1
+
+        # goes left
+        while loopCounterX > 0:
+            display.set_pixel(loopCounterX, loopCounterY, 9)
             sleep(500)
             display.set_pixel(loopCounterX, loopCounterY, 0)
-
-        # move left
-        while (loopCounterX >= 0) :
-            display.set_pixel(loopCounterX, loopCounterY, 9)
             loopCounterX -= 1
-            sleep(500)
-            display.set_pixel(loopCounterX, loopCounterY, 0)
 
-        # move up
-        while (loopCounterY >= 0) :
+        # goes up
+        while loopCounterY >= 0:
             display.set_pixel(loopCounterX, loopCounterY, 9)
-            loopCounterY -= 1
             sleep(500)
             display.set_pixel(loopCounterX, loopCounterY, 0)
+            loopCounterY -= 1
+        display.show(Image.HAPPY)
+
+    # counter clock wise
+    if button_b.was_pressed():
+
+        # setup
+        display.clear()
+        loopCounterX = 0
+        loopCounterY = 0
+
+        #  goes down
+        while loopCounterY < 4:
+            display.set_pixel(loopCounterX, loopCounterY, 9)
+            sleep(500)
+            display.set_pixel(loopCounterX, loopCounterY, 0)
+            loopCounterY = loopCounterY + 1
+
+        #  goes right
+        while loopCounterX < 4:
+            display.set_pixel(loopCounterX, loopCounterY, 9)
+            sleep(500)
+            display.set_pixel(loopCounterX, loopCounterY, 0)
+            loopCounterX = loopCounterX + 1
+
+        #  goes up
+        while loopCounterY > 0:
+            display.set_pixel(loopCounterX, loopCounterY, 9)
+            sleep(500)
+            display.set_pixel(loopCounterX, loopCounterY, 0)
+            loopCounterY = loopCounterY - 1
+
+        # goes left
+        while loopCounterX >= 0:
+            display.set_pixel(loopCounterX, loopCounterY, 9)
+            sleep(500)
+            display.set_pixel(loopCounterX, loopCounterY, 0)
+            loopCounterX = loopCounterX - 1
+        display.show(Image.HAPPY)
