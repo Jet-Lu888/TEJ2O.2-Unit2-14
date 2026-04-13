@@ -60,21 +60,21 @@ while True:
         loopCounterX = 0
         loopCounterY = 0
 
-        #  goes down
+        # goes down
         while loopCounterY < 4:
             display.set_pixel(loopCounterX, loopCounterY, 9)
             sleep(500)
             display.set_pixel(loopCounterX, loopCounterY, 0)
             loopCounterY = loopCounterY + 1
 
-        #  goes right
+        # goes right
         while loopCounterX < 4:
             display.set_pixel(loopCounterX, loopCounterY, 9)
             sleep(500)
             display.set_pixel(loopCounterX, loopCounterY, 0)
             loopCounterX = loopCounterX + 1
 
-        #  goes up
+        # goes up
         while loopCounterY > 0:
             display.set_pixel(loopCounterX, loopCounterY, 9)
             sleep(500)
